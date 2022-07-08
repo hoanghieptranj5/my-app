@@ -1,7 +1,7 @@
-import React from "react";
+import { Component } from "react";
 import logo from "../logo.svg";
 
-export default class AxiosService extends React.Component {
+export default class AxiosService extends Component {
   WAIT_TIME = 3000;
   URL = "https://d9frjnilz1.execute-api.us-east-2.amazonaws.com/Prod/api/Values";
   LOCAL = "https://localhost:5001/api/Values";

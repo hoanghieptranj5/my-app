@@ -1,79 +1,120 @@
 import { Space, Table, Tag } from 'antd';
-import React from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
+import { calculate } from '../../service/ElectricService';
+import _debounce from 'lodash/debounce';
 
-const columns = [
+const sampleColumns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'From',
+    dataIndex: 'from',
+    key: 'from',
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'To',
+    dataIndex: 'to',
+    key: 'to',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Standard Price',
+    dataIndex: 'standardPrice',
+    key: 'standardPrice',
   },
   {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: 'Price',
+    key: 'price',
+    dataIndex: 'price'
   },
   {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
+    title: 'Usage',
+    key: 'usage',
+    dataIndex: 'usage'
   },
 ];
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+const moqData = {
+  "usage": 125,
+  "items": [
+    {
+      "from": 0,
+      "to": 25,
+      "standardPrice": 1678,
+      "price": 41950,
+      "usage": 25
+    },
+    {
+      "from": 51,
+      "to": 76,
+      "standardPrice": 1734,
+      "price": 43350,
+      "usage": 25
+    },
+    {
+      "from": 102,
+      "to": 152,
+      "standardPrice": 2014,
+      "price": 100700,
+      "usage": 50
+    },
+    {
+      "from": 203,
+      "to": 253,
+      "standardPrice": 2536,
+      "price": 63400,
+      "usage": 25
+    },
+    {
+      "from": 304,
+      "to": 354,
+      "standardPrice": 2834,
+      "price": 0,
+      "usage": 0
+    },
+    {
+      "from": 405,
+      "to": 10000,
+      "standardPrice": 2927,
+      "price": 0,
+      "usage": 0
+    }
+  ],
+  "total": 249400,
+  "totalVat": 274340
+};
 
-const CalculatedTable = () => <Table columns={columns} dataSource={data} />;
+const CalculatedTable = ({ inputUsage }) => {
+
+  const [columns, setColumns] = useState(sampleColumns);
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const [totalUsage, setTotalUsage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [totalVAT, setTotalVAT] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await calculate(inputUsage);
+      return result.json();
+    }
+    fetchData()
+      .then(res => {
+          setTotalUsage(res.usage);
+          setTotal(res.total);
+          setTotalVAT(res.totalVat);
+          setData(res.items);
+
+          setLoading(false);
+        })
+      .catch(err => console.error(err));
+  }, [inputUsage])
+
+  return (
+    <div>
+      <p>Total usage: {totalUsage}</p>
+      <p>Total usage: {total}</p>
+      <p>Total usage: {totalVAT}</p>
+      <Table columns={columns} dataSource={data} loading={loading} />
+    </div>
+  );
+};
 export default CalculatedTable;
