@@ -1,7 +1,7 @@
 import { Space, Table, Tag } from 'antd';
 import React, {useEffect, useState, useCallback} from 'react';
 import { calculate } from '../../service/ElectricService';
-import _debounce from 'lodash/debounce';
+import NumberFormat from 'react-number-format';
 
 const sampleColumns = [
   {
@@ -19,11 +19,27 @@ const sampleColumns = [
     title: 'Standard Price',
     dataIndex: 'standardPrice',
     key: 'standardPrice',
+    render: text => <NumberFormat
+      value={text}
+      className="foo"
+      displayType={'text'}
+      thousandSeparator={true}
+      prefix={'$'}
+      renderText={(value, props) => <div {...props}>{value}</div>}
+    />
   },
   {
     title: 'Price',
     key: 'price',
-    dataIndex: 'price'
+    dataIndex: 'price',
+    render: text => <NumberFormat
+      value={text}
+      className="foo"
+      displayType={'text'}
+      thousandSeparator={true}
+      prefix={'$'}
+      renderText={(value, props) => <div {...props}>{value}</div>}
+    />
   },
   {
     title: 'Usage',
@@ -110,9 +126,23 @@ const CalculatedTable = ({ inputUsage }) => {
 
   return (
     <div>
-      <p>Total usage: {totalUsage}</p>
-      <p>Total usage: {total}</p>
-      <p>Total usage: {totalVAT}</p>
+      <p>Total Usage: {totalUsage} KWh</p>
+      <p>Total Price: <NumberFormat
+        value={total}
+        className="foo"
+        displayType={'text'}
+        thousandSeparator={true}
+        prefix={'$'}
+        renderText={(value, props) => <div {...props}>{value}</div>}
+      /></p>
+      <p>Total VAT Price: <NumberFormat
+        value={totalVAT}
+        className="foo"
+        displayType={'text'}
+        thousandSeparator={true}
+        prefix={'$'}
+        renderText={(value, props) => <div {...props}>{value}</div>}
+      /></p>
       <Table columns={columns} dataSource={data} loading={loading} />
     </div>
   );
