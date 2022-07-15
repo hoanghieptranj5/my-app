@@ -7,8 +7,7 @@ const sampleColumns = [
   {
     title: 'From',
     dataIndex: 'from',
-    key: 'from',
-    render: (text) => <a>{text}</a>,
+    key: 'from'
   },
   {
     title: 'To',

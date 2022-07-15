@@ -10,7 +10,7 @@ import DynamicContent from "./component/DynamicContent";
 
 const { Header, Content, Sider } = Layout;
 
-const items1: MenuProps['items'] = ['Calculator', 'New1', 'New2'].map(key => ({
+const items1: MenuProps['items'] = ['Calculator', 'Users', 'New2'].map(key => ({
   key,
   label: `${key}`,
 }));
@@ -52,7 +52,7 @@ const App = () => {
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} onClick={onClick}/>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['Users']} items={items1} onClick={onClick}/>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">

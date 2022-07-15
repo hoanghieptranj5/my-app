@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import CalculatedTable from "./tinh_tien_dien_table/CalculatedTable";
 import CalculateElectricPage from "../page/CalculateElectricPage";
+import UserTable from "./userTable/UserTable";
 
 const DynamicContent = ({page}) => {
   const [component, setComponent] = useState(<a>Hello</a>);
 
    useEffect(() => {
      if (page.toString() === "Calculator") {
-       setComponent(<CalculateElectricPage />);
+       setComponent(<CalculateElectricPage/>);
+
+     } else if (page.toString() === "Users") {
+       setComponent(<UserTable abc={"acb"} />)
      } else {
        setComponent(<b>Coming Soon...</b>)
      }
