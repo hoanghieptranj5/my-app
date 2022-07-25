@@ -5,6 +5,8 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, {useEffect, useState} from 'react';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 import DynamicContent from "./component/DynamicContent";
 
@@ -78,9 +80,11 @@ const App = () => {
               minHeight: 280,
             }}
           >
-            <DynamicContent
-              page={page}
-            />
+            <Provider store={store}>
+              <DynamicContent
+                page={page}
+              />
+            </Provider>
           </Content>
         </Layout>
       </Layout>
