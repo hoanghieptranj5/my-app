@@ -1,7 +1,7 @@
 import {UserOutlined} from '@ant-design/icons';
 import {useEffect, useState} from "react";
 import {Button, Input} from "antd";
-import CalculatedTable from "../component/tinh_tien_dien_table/CalculatedTable";
+import CalculatedTable from "../component/tinhTienDienTable/CalculatedTable";
 
 const DEFAULT_VALUE = 10;
 

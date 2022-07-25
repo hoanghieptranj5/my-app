@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import AxiosService from "./service/AxiosService";
-import CalculatedTable from "./component/tinh_tien_dien_table/CalculatedTable";
+import CalculatedTable from "./component/tinhTienDienTable/CalculatedTable";
 import CalculateElectricPage from "./page/CalculateElectricPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
