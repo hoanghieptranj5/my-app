@@ -3,7 +3,7 @@ import logo from "../logo.svg";
 
 export default class AxiosService extends Component {
   WAIT_TIME = 3000;
-  URL = "https://d9frjnilz1.execute-api.us-east-2.amazonaws.com/Prod/api/Values";
+  URL = "https://zn3bygyjy5.execute-api.us-west-1.amazonaws.com/Prod/api/Values";
   LOCAL = "https://localhost:5001/api/Values";
 
   state = {
