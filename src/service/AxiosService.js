@@ -1,10 +1,10 @@
 import { Component } from "react";
 import logo from "../logo.svg";
+import { getEndpoint } from "../url/backendServices";
 
 export default class AxiosService extends Component {
   WAIT_TIME = 3000;
-  URL = "https://zn3bygyjy5.execute-api.us-west-1.amazonaws.com/Prod/api/Values";
-  LOCAL = "https://localhost:5001/api/Values";
+  GET_VALUE_URL = 'Values';
 
   state = {
     persons: [],
@@ -12,7 +12,7 @@ export default class AxiosService extends Component {
   }
 
   componentDidMount() {
-    fetch(this.URL)
+    fetch(getEndpoint(this.GET_VALUE_URL))
       .then(res => res.json())
       .then(res => {
         const persons = res;

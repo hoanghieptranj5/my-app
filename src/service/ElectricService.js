@@ -1,6 +1,7 @@
+import { getEndpoint } from "../url/backendServices";
 
-const URL = "https://zn3bygyjy5.execute-api.us-west-1.amazonaws.com/Prod/api/Calculator?usage=";
+const CALCULATE_URL = 'Calculator?usage=';
 
 export const calculate = async (usage) => {
-  return await fetch(URL + usage.toString());
+  return await fetch(getEndpoint(CALCULATE_URL + usage.toString()));
 }
