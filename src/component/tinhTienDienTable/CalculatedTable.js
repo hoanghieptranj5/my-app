@@ -2,6 +2,8 @@ import { Space, Table, Tag } from 'antd';
 import React, {useEffect, useState, useCallback} from 'react';
 import { calculate } from '../../service/ElectricService';
 import NumberFormat from 'react-number-format';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCalculation} from "../../redux/slice/valueSlice";
 
 const sampleColumns = [
   {
@@ -97,37 +99,19 @@ const moqData = {
 };
 
 const CalculatedTable = ({ inputUsage }) => {
-
-  const [columns, setColumns] = useState(sampleColumns);
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-
-  const [totalUsage, setTotalUsage] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [totalVAT, setTotalVAT] = useState(0);
+  const vl = useSelector((state) => state.vl);
+  const dispatch = useDispatch();
+  const [columns] = useState(sampleColumns);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await calculate(inputUsage);
-      return result.json();
-    }
-    fetchData()
-      .then(res => {
-          setTotalUsage(res.usage);
-          setTotal(res.total);
-          setTotalVAT(res.totalVat);
-          setData(res.items);
-
-          setLoading(false);
-        })
-      .catch(err => console.error(err));
+    dispatch(fetchCalculation(inputUsage));
   }, [inputUsage])
 
   return (
     <div>
-      <p>Total Usage: {totalUsage} KWh</p>
+      <p>Usage: <b>{vl.usage} KWh</b></p>
       <p>Total Price: <NumberFormat
-        value={total}
+        value={vl.total}
         className="foo"
         displayType={'text'}
         thousandSeparator={true}
@@ -135,14 +119,14 @@ const CalculatedTable = ({ inputUsage }) => {
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
       <p>Total VAT Price: <NumberFormat
-        value={totalVAT}
+        value={vl.totalVat}
         className="foo"
         displayType={'text'}
         thousandSeparator={true}
         prefix={'$'}
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
-      <Table columns={columns} dataSource={data} loading={loading} />
+      <Table columns={columns} dataSource={vl.items} loading={vl.isLoading} />
     </div>
   );
 };
