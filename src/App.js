@@ -41,7 +41,6 @@ const App = () => {
   const [page, setPage] = useState(1);
 
   const onClick = e => {
-    console.log('click', e);
     setPage(e.key);
   }
 

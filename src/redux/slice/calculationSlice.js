@@ -17,12 +17,10 @@ export const fetchCalculation = createAsyncThunk(
   }
 )
 
-export const valueSlice = createSlice({
+export const calculationSlice = createSlice({
   name: 'value',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCalculation.pending, (state) => {
       state.isLoading = true;
@@ -43,4 +41,4 @@ export const valueSlice = createSlice({
   }
 })
 
-export default valueSlice.reducer;
+export default calculationSlice.reducer;

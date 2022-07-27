@@ -2,7 +2,6 @@ import {UserOutlined} from '@ant-design/icons';
 import {useEffect, useState} from "react";
 import {Button, Input} from "antd";
 import CalculatedTable from "../component/tinhTienDienTable/CalculatedTable";
-import {Counter} from "../component/Counter";
 
 const DEFAULT_VALUE = 10;
 
@@ -20,7 +19,6 @@ const CalculateElectricPage = () => {
 
   return (
     <div>
-      <Counter/>
       <h1>Enter your usage: </h1>
       <Input size="large" placeholder="Usage" prefix={<UserOutlined/>} value={value} onChange={onChangeNumber}></Input>
       <Button onClick={onSubmit}>Submit</Button>

@@ -46,7 +46,6 @@ const UserTable = ({ abc }) => {
     }
     fetchData()
       .then(res => {
-        console.log(res[0]);
         setUsers(res);
         setLoading(false);
       })

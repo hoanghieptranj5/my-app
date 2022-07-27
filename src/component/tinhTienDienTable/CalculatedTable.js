@@ -1,9 +1,8 @@
 import { Space, Table, Tag } from 'antd';
 import React, {useEffect, useState, useCallback} from 'react';
-import { calculate } from '../../service/ElectricService';
 import NumberFormat from 'react-number-format';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCalculation} from "../../redux/slice/valueSlice";
+import {fetchCalculation} from "../../redux/slice/calculationSlice";
 
 const sampleColumns = [
   {
@@ -99,7 +98,7 @@ const moqData = {
 };
 
 const CalculatedTable = ({ inputUsage }) => {
-  const vl = useSelector((state) => state.vl);
+  const calculation = useSelector((state) => state.calculation);
   const dispatch = useDispatch();
   const [columns] = useState(sampleColumns);
 
@@ -109,9 +108,9 @@ const CalculatedTable = ({ inputUsage }) => {
 
   return (
     <div>
-      <p>Usage: <b>{vl.usage} KWh</b></p>
+      <p>Usage: <b>{calculation.usage} KWh</b></p>
       <p>Total Price: <NumberFormat
-        value={vl.total}
+        value={calculation.total}
         className="foo"
         displayType={'text'}
         thousandSeparator={true}
@@ -119,14 +118,14 @@ const CalculatedTable = ({ inputUsage }) => {
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
       <p>Total VAT Price: <NumberFormat
-        value={vl.totalVat}
+        value={calculation.totalVat}
         className="foo"
         displayType={'text'}
         thousandSeparator={true}
         prefix={'$'}
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
-      <Table columns={columns} dataSource={vl.items} loading={vl.isLoading} />
+      <Table columns={columns} dataSource={calculation.items} loading={calculation.isLoading} />
     </div>
   );
 };
