@@ -1,8 +1,7 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import {Table} from "antd";
-import NumberFormat from "react-number-format";
-import {calculate} from "../../service/ElectricService";
-import {getUsers} from "../../service/UserService";
+import React, {useEffect} from 'react';
+import {Table, Tag} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchUsers} from "../../redux/slice/userSlice";
 
 const sampleColumns = [
   {
@@ -20,7 +19,7 @@ const sampleColumns = [
     title: 'roles',
     dataIndex: 'roles',
     key: 'roles',
-    render: (roles) => <tag>{roles.map(r => <p><a>{r.country}</a> / <a>{r.role}</a></p>)}</tag>
+    render: (roles) => <Tag>{roles.map(r => <p><a>{r.country}</a> / <a>{r.role}</a></p>)}</Tag>
   },
   {
     title: 'forcePasswordChange',
@@ -35,27 +34,17 @@ const sampleColumns = [
 ];
 
 const UserTable = ({ abc }) => {
-
-  const [users, setUsers] = useState();
-  const [loading, setLoading] = useState(true);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getUsers();
-      return result.json();
-    }
-    fetchData()
-      .then(res => {
-        setUsers(res);
-        setLoading(false);
-      })
-      .catch(err => console.error(err));
+    dispatch(fetchUsers());
   }, [abc])
 
   return (
     <Table
-      loading={loading}
-      dataSource={users}
+      loading={user.isLoading}
+      dataSource={user.items}
       columns={sampleColumns}
     />
   )
