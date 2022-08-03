@@ -5,9 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-import AxiosService from "./service/AxiosService";
-import CalculatedTable from "./component/tinhTienDienTable/CalculatedTable";
-import CalculateElectricPage from "./page/CalculateElectricPage";
+import CalculatedTable from "./Component/CalculatedTable/CalculatedTable";
+import CalculateElectricPage from "./Page/CalculateElectricPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +14,6 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App/>} />
-        <Route path="/axios" element={<AxiosService/>} />
         <Route path="/table" element={<CalculatedTable/>} />
         <Route path="/calculate-electric-page" element={<CalculateElectricPage />} />
       </Routes>

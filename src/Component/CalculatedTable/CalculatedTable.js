@@ -2,7 +2,7 @@ import { Space, Table, Tag } from 'antd';
 import React, {useEffect, useState, useCallback} from 'react';
 import NumberFormat from 'react-number-format';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCalculation} from "../../redux/slice/calculationSlice";
+import {fetchCalculation} from "../../Redux/Slice/CalculationSlice";
 
 const sampleColumns = [
   {

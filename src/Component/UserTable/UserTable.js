@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Table, Tag} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchUsers} from "../../redux/slice/userSlice";
+import {fetchUsers} from "../../Redux/Slice/UserSlice";
 
 const sampleColumns = [
   {

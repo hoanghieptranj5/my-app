@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getUsers} from "../../service/UserService";
+import {getUsers} from "../../Service/UserService";
 
 const initialState = {
   isLoading: true,

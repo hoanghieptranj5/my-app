@@ -5,10 +5,10 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, {useEffect, useState} from 'react';
-import { store } from './redux/store';
+import { store } from './Redux/Store';
 import { Provider } from 'react-redux';
 
-import DynamicContent from "./component/DynamicContent";
+import DynamicContent from "./Component/DynamicContent";
 
 const { Header, Content, Sider } = Layout;
 
@@ -47,7 +47,7 @@ const App = () => {
   return (
     // <div className="App">
     //   <Link to="/axios">Axios</Link> |{" "}
-    //   <Link to="/calculate-electric-page">Page</Link> |{" "}
+    //   <Link to="/calculate-electric-Page">Page</Link> |{" "}
     //   <Link to="/table">Table</Link>
     // </div>
     <Layout>

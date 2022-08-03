@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import CalculateElectricPage from "../page/CalculateElectricPage";
-import UserTable from "./userTable/UserTable";
+import CalculateElectricPage from "../Page/CalculateElectricPage";
+import UserTable from "./UserTable/UserTable";
 
 const DynamicContent = ({page}) => {
   const [component, setComponent] = useState(<a>Hello</a>);

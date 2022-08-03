@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {calculate} from "../../service/ElectricService";
+import {calculate} from "../../Service/ElectricService";
 
 const initialState = {
   items: [],
