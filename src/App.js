@@ -12,7 +12,7 @@ import DynamicContent from "./Component/DynamicContent";
 
 const { Header, Content, Sider } = Layout;
 
-const items1: MenuProps['items'] = ['Calculator', 'Users', 'New2'].map(key => ({
+const items1: MenuProps['items'] = ['Calculator', 'Users', 'Hanzi'].map(key => ({
   key,
   label: `${key}`,
 }));
