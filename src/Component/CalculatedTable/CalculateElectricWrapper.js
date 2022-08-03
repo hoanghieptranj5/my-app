@@ -1,11 +1,11 @@
 import {UserOutlined} from '@ant-design/icons';
 import {useEffect, useState} from "react";
 import {Button, Input} from "antd";
-import CalculatedTable from "../Component/CalculatedTable/CalculatedTable";
+import CalculatedTable from "./CalculatedTable";
 
 const DEFAULT_VALUE = 10;
 
-const CalculateElectricPage = () => {
+const CalculateElectricWrapper = () => {
   const [value, setValue] = useState(DEFAULT_VALUE);
   const [submitted, setSubmitted] = useState(DEFAULT_VALUE);
 
@@ -29,4 +29,4 @@ const CalculateElectricPage = () => {
   )
 }
 
-export default CalculateElectricPage;
+export default CalculateElectricWrapper;

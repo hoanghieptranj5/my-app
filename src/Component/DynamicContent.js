@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CalculateElectricPage from "../Page/CalculateElectricPage";
+import CalculateElectricWrapper from "./CalculatedTable/CalculateElectricWrapper";
 import UserTable from "./UserTable/UserTable";
 
 const DynamicContent = ({page}) => {
@@ -7,7 +7,7 @@ const DynamicContent = ({page}) => {
 
    useEffect(() => {
      if (page.toString() === "Calculator") {
-       setComponent(<CalculateElectricPage/>);
+       setComponent(<CalculateElectricWrapper/>);
 
      } else if (page.toString() === "Users") {
        setComponent(<UserTable abc={"acb"} />)
