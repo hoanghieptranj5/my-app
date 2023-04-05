@@ -3,6 +3,7 @@ import CalculateElectricWrapper from "./CalculatedTable/CalculateElectricWrapper
 import UserTable from "./UserTable/UserTable";
 import HanziTable from "./HanziTable/HanziTable";
 import HanziCard from "./HanziCard/HanziCard";
+import HanziContainer from "./HanziCard/HanziContainer";
 
 const DynamicContent = ({page}) => {
   const [component, setComponent] = useState(<a>Hello</a>);
@@ -16,7 +17,7 @@ const DynamicContent = ({page}) => {
     } else if (page.toString() === "Hanzi") {
       setComponent(<HanziTable/>)
     } else if (page.toString() == "HanziCard"){
-      setComponent(<HanziCard/>)
+      setComponent(<HanziContainer />)
     } else {
       setComponent(<UserTable abc={"acb"}/>)
     }

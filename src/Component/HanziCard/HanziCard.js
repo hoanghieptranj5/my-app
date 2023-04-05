@@ -3,12 +3,12 @@ import {Avatar, Card} from 'antd';
 
 const {Meta} = Card;
 
-const HanziCard = () => {
+const HanziCard = ({hanzi}) => {
   return (
     <Card
       style={{width: 300}}
       cover={
-        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>乱</b>
+        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>{hanzi}</b>
       }
       actions={[
         <SettingOutlined key="setting"/>,
