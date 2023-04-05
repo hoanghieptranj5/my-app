@@ -8,10 +8,8 @@ const HanziCard = () => {
     <Card
       style={{width: 300}}
       cover={
-        <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        />}
+        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>乱</b>
+      }
       actions={[
         <SettingOutlined key="setting"/>,
         <EditOutlined key="edit"/>,
@@ -26,3 +24,5 @@ const HanziCard = () => {
     </Card>
   );
 };
+
+export default HanziCard;

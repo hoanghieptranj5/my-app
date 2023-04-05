@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import CalculateElectricWrapper from "./CalculatedTable/CalculateElectricWrapper";
 import UserTable from "./UserTable/UserTable";
 import HanziTable from "./HanziTable/HanziTable";
+import HanziCard from "./HanziCard/HanziCard";
 
 const DynamicContent = ({page}) => {
   const [component, setComponent] = useState(<a>Hello</a>);
@@ -14,6 +15,8 @@ const DynamicContent = ({page}) => {
       setComponent(<UserTable abc={"acb"}/>)
     } else if (page.toString() === "Hanzi") {
       setComponent(<HanziTable/>)
+    } else if (page.toString() == "HanziCard"){
+      setComponent(<HanziCard/>)
     } else {
       setComponent(<UserTable abc={"acb"}/>)
     }
