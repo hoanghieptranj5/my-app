@@ -1,16 +1,16 @@
 import './App.css';
 import {Link} from "react-router-dom";
 
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu } from 'antd';
+import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
+import type {MenuProps} from 'antd';
+import {Breadcrumb, Layout, Menu} from 'antd';
 import React, {useEffect, useState} from 'react';
-import { store } from './Redux/Store';
-import { Provider } from 'react-redux';
+import {store} from './Redux/Store';
+import {Provider} from 'react-redux';
 
 import DynamicContent from "./Component/DynamicContent";
 
-const { Header, Content, Sider } = Layout;
+const {Header, Content, Sider} = Layout;
 
 const items1: MenuProps['items'] = ['Calculator', 'Users', 'Hanzi'].map(key => ({
   key,
@@ -52,7 +52,7 @@ const App = () => {
     // </div>
     <Layout>
       <Header className="header">
-        <div className="logo" />
+        <div className="logo"/>
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['Users']} items={items1} onClick={onClick}/>
       </Header>
       <Layout>
@@ -61,12 +61,12 @@ const App = () => {
             mode="inline"
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+            style={{height: '100%', borderRight: 0}}
             items={items2}
           />
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
+        <Layout style={{padding: '0 24px 24px'}}>
+          <Breadcrumb style={{margin: '16px 0'}}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>

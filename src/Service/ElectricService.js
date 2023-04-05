@@ -1,4 +1,4 @@
-import { getEndpoint } from "./Url/BackendServiceConstants";
+import {getEndpoint} from "./Url/BackendServiceConstants";
 
 const CALCULATE_URL = 'Calculator?usage=';
 

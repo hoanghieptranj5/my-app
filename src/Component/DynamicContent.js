@@ -13,7 +13,7 @@ const DynamicContent = ({page}) => {
     } else if (page.toString() === "Users") {
       setComponent(<UserTable abc={"acb"}/>)
     } else if (page.toString() === "Hanzi") {
-      setComponent(<HanziTable />)
+      setComponent(<HanziTable/>)
     } else {
       setComponent(<UserTable abc={"acb"}/>)
     }

@@ -1,4 +1,4 @@
-import { getEndpoint } from "./Url/BackendServiceConstants";
+import {getEndpoint} from "./Url/BackendServiceConstants";
 
 const GET_HANZI_LIST = "Hanzi/list";
 const FIND_HANZI = "Hanzi/find";

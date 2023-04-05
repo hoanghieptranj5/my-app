@@ -1,11 +1,11 @@
-import { Table } from 'antd';
+import {Table} from 'antd';
 import React, {useEffect} from 'react';
 import NumberFormat from 'react-number-format';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCalculation} from "../../Redux/Slice/CalculationSlice";
 import {calculatedTableColumns} from "./CalculatedTableColumns";
 
-const CalculatedTable = ({ inputUsage }) => {
+const CalculatedTable = ({inputUsage}) => {
   const calculation = useSelector((state) => state.calculation);
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const CalculatedTable = ({ inputUsage }) => {
         prefix={'$'}
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
-      <Table columns={calculatedTableColumns} dataSource={calculation.items} loading={calculation.isLoading} />
+      <Table columns={calculatedTableColumns} dataSource={calculation.items} loading={calculation.isLoading}/>
     </div>
   );
 };

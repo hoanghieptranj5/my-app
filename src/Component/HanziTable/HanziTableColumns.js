@@ -1,4 +1,4 @@
-export const hanziTableColumns =  [
+export const hanziTableColumns = [
   {
     title: 'ID',
     dataIndex: 'hanziId',

@@ -5,7 +5,7 @@ import {fetchUsers} from "../../Redux/Slice/UserSlice";
 import {userTableColumns} from "./UserTableColumns";
 
 
-const UserTable = ({ abc }) => {
+const UserTable = ({abc}) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 

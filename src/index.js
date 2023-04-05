@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App/>} />
-        <Route path="/table" element={<CalculatedTable/>} />
-        <Route path="/calculate-electric-page" element={<CalculateElectricWrapper />} />
+        <Route path="/" element={<App/>}/>
+        <Route path="/table" element={<CalculatedTable/>}/>
+        <Route path="/calculate-electric-page" element={<CalculateElectricWrapper/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
