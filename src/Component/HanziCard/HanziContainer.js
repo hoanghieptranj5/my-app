@@ -32,7 +32,7 @@ const HanziContainer = () => {
 
       {
         hanziStore.isLoading
-          ? <Spin/> : hanziStore.items.map(i => <HanziCard hanzi={i.id}/>)
+          ? <Spin/> : hanziStore.items.map(i => <HanziCard hanzi={i}/>)
       }
     </div>
   );
