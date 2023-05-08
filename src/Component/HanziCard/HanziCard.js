@@ -3,12 +3,12 @@ import {Avatar, Card} from 'antd';
 
 const {Meta} = Card;
 
-const HanziCard = ({hanzi}) => {
+const HanziCard = ({ hanzi }) => {
   return (
     <Card
       style={{width: 300}}
       cover={
-        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>{hanzi}</b>
+        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>{hanzi.id}</b>
       }
       actions={[
         <SettingOutlined key="setting"/>,
@@ -18,8 +18,8 @@ const HanziCard = ({hanzi}) => {
     >
       <Meta
         avatar={<Avatar src="https://joesch.moe/api/v1/random"/>}
-        title="Card title"
-        description="This is the description"
+        title={hanzi.hanViet}
+        description={hanzi.pinyin}
       />
     </Card>
   );
