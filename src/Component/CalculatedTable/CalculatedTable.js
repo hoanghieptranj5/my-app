@@ -25,7 +25,7 @@ const CalculatedTable = ({inputUsage}) => {
         renderText={(value, props) => <div {...props}>{value}</div>}
       /></p>
       <p>Total VAT Price: <NumberFormat
-        value={calculation.totalVat}
+        value={calculation.totalWithVAT}
         className="foo"
         displayType={'text'}
         thousandSeparator={true}

@@ -6,7 +6,7 @@ const initialState = {
   isLoading: true,
   totalUsage: 0,
   total: 0,
-  totalVAT: 0
+  totalWithVAT: 0
 }
 
 export const fetchCalculation = createAsyncThunk(
@@ -31,7 +31,7 @@ export const calculationSlice = createSlice({
       state.items = action.payload.items;
       state.usage = action.payload.usage;
       state.total = action.payload.total;
-      state.totalVat = action.payload.totalVat;
+      state.totalWithVAT = action.payload.totalWithVAT;
     });
 
     builder.addCase(fetchCalculation.rejected, (state, action) => {
