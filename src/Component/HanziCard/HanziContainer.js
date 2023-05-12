@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import { Input, Space } from 'antd';
+import { Input } from 'antd';
 import {Spin, Button } from 'antd';
 import HanziCard from "./HanziCard";
 import {getHanziList} from "../../Redux/Slice/HanziCardSlice";
@@ -12,7 +12,7 @@ const HanziContainer = () => {
   const hanziStore = useSelector((state) => state.hanziCard);
   const dispatch = useDispatch();
 
-  const [skip, setSkip] = useState(10);
+  const [skip, setSkip] = useState(1);
   const [take, setTake] =  useState(1);
 
   useEffect(() => {

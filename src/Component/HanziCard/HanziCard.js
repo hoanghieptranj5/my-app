@@ -1,14 +1,26 @@
 import {EditOutlined, EllipsisOutlined, SettingOutlined} from '@ant-design/icons';
 import {Avatar, Card} from 'antd';
+import DescriptionsComponent from "../Description/Description";
+import {useState} from "react";
 
 const {Meta} = Card;
 
 const HanziCard = ({ hanzi }) => {
+  const [showMore, toggleShowMore] = useState(true);
+
+  const clickShowMoreButton = (value) => {
+    toggleShowMore(true);
+  }
+
+  const clickCollapseButton = (value) => {
+    toggleShowMore(false);
+  }
+
   return (
     <Card
-      style={{width: 300}}
+      style={{width: "100%"}}
       cover={
-        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '26%' }}>{hanzi.id}</b>
+        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '1%' }}>{hanzi.id}</b>
       }
       actions={[
         <SettingOutlined key="setting"/>,
@@ -21,6 +33,17 @@ const HanziCard = ({ hanzi }) => {
         title={hanzi.hanViet}
         description={hanzi.pinyin}
       />
+      {
+        showMore ? <div>
+          <a onClick={clickCollapseButton}>Collapse</a>
+          <DescriptionsComponent hanzi={hanzi} />
+        </div>
+          :
+        <a onClick={clickShowMoreButton}>
+          Show more
+        </a>
+      }
+
     </Card>
   );
 };
