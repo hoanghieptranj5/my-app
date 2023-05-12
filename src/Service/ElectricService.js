@@ -1,5 +1,3 @@
-import {getEndpoint} from "./Url/BackendServiceConstants";
-
 const productionLink = "https://shanetestazurefunction.azurewebsites.net/api/electricPrices/usage/230";
 const CALCULATE_URL = 'Calculator?usage=';
 

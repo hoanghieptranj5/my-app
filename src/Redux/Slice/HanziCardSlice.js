@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {getHanziRange} from "../../Service/HanziCardService";
-import {fetchUsers} from "./UserSlice";
 
 const initialState = {
   isLoading: true,
