@@ -20,7 +20,7 @@ const HanziCard = ({ hanzi }) => {
     <Card
       style={{width: "100%"}}
       cover={
-        <b style={{ fontSize: 120, fontFamily: 'kaiti', marginLeft: '1%' }}>{hanzi.id}</b>
+        <b style={{ fontSize: 120, fontFamily: 'kaiti, kaiti SC', marginLeft: '1%' }}>{hanzi.id}</b>
       }
       actions={[
         <SettingOutlined key="setting"/>,
