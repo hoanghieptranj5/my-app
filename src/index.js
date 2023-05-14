@@ -5,18 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-import CalculatedTable from "./Component/CalculatedTable/CalculatedTable";
-import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App/>}/>
-        <Route path="/table" element={<CalculatedTable/>}/>
-        <Route path="/calculate-electric-page" element={<CalculateElectricWrapper/>}/>
-      </Routes>
+        <App/>
     </BrowserRouter>
   </React.StrictMode>
 );

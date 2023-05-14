@@ -1,5 +1,5 @@
 import './App.css';
-import {Link} from "react-router-dom";
+import {Routes, Route, Link} from "react-router-dom";
 
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
@@ -8,13 +8,14 @@ import React, {useEffect, useState} from 'react';
 import {store} from './Redux/Store';
 import {Provider} from 'react-redux';
 
-import DynamicContent from "./Component/DynamicContent";
+import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
+import HanziContainer from "./Component/HanziCard/HanziContainer";
 
 const {Header, Content, Sider} = Layout;
 
-const menuItems: MenuProps['items'] = ['Calculator', 'HanziCard', 'Descriptions'].map(key => ({
+const menuItems: MenuProps['items'] = ['Calculator', 'HanziCard'].map(key => ({
   key,
-  label: `${key}`,
+  label: <Link className='nav-link' to={`${key}`}>{key}</Link>,
 }));
 
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -45,15 +46,11 @@ const App = () => {
   }
 
   return (
-    // <div className="App">
-    //   <Link to="/axios">Axios</Link> |{" "}
-    //   <Link to="/calculate-electric-Page">Page</Link> |{" "}
-    //   <Link to="/table">Table</Link>
-    // </div>
     <Layout>
       <Header className="header">
         <div className="logo"/>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['Calculator']} items={menuItems} onClick={onClick}/>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['Calculator']} items={menuItems}
+              onClick={onClick}/>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
@@ -80,9 +77,10 @@ const App = () => {
             }}
           >
             <Provider store={store}>
-              <DynamicContent
-                page={page}
-              />
+              <Routes>
+                <Route path="/Calculator" element={<CalculateElectricWrapper/>}></Route>
+                <Route path="/HanziCard" element={<HanziContainer/>}></Route>
+              </Routes>
             </Provider>
           </Content>
         </Layout>
