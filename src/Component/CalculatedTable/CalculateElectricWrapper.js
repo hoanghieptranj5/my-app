@@ -2,12 +2,18 @@ import {UserOutlined} from '@ant-design/icons';
 import {useEffect, useState} from "react";
 import {Button, Input} from "antd";
 import CalculatedTable from "./CalculatedTable";
+import {setSelectedPage} from "../../Redux/Slice/NavigationBarSlice";
+
 
 const DEFAULT_VALUE = 10;
 
 const CalculateElectricWrapper = () => {
   const [value, setValue] = useState(DEFAULT_VALUE);
   const [submitted, setSubmitted] = useState(DEFAULT_VALUE);
+
+  useEffect(() => {
+    setSelectedPage('Calculator');
+  })
 
   const onChangeNumber = (e) => {
     setValue(e.target.value);

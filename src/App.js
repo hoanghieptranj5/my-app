@@ -1,12 +1,11 @@
 import './App.css';
+import {useSelector} from "react-redux";
 import {Routes, Route, Link} from "react-router-dom";
 
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
 import {Breadcrumb, Layout, Menu} from 'antd';
-import React, {useEffect, useState} from 'react';
-import {store} from './Redux/Store';
-import {Provider} from 'react-redux';
+import React from 'react';
 
 import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
 import HanziContainer from "./Component/HanziCard/HanziContainer";
@@ -39,53 +38,47 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
 );
 
 const App = () => {
-  const [page, setPage] = useState(1);
-
-  const onClick = e => {
-    setPage(e.key);
-  }
+  const navigationBar = useSelector((state) => state.navigationBar);
 
   return (
-    <Layout>
-      <Header className="header">
-        <div className="logo"/>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['Calculator']} items={menuItems}
-              onClick={onClick}/>
-      </Header>
       <Layout>
-        <Sider width={200} className="site-layout-background">
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{height: '100%', borderRight: 0}}
-            items={items2}
-          />
-        </Sider>
-        <Layout style={{padding: '0 24px 24px'}}>
-          <Breadcrumb style={{margin: '16px 0'}}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content
-            className="site-layout-background"
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-            }}
-          >
-            <Provider store={store}>
+        <Header className="header">
+          <div className="logo"/>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[navigationBar.selectedPage]} items={menuItems}/>
+        </Header>
+        <Layout>
+          <Sider width={200} className="site-layout-background">
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={['1']}
+              defaultOpenKeys={['sub1']}
+              style={{height: '100%', borderRight: 0}}
+              items={items2}
+            />
+          </Sider>
+          <Layout style={{padding: '0 24px 24px'}}>
+            <Breadcrumb style={{margin: '16px 0'}}>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+              }}
+            >
               <Routes>
+                <Route path="/" element={<CalculateElectricWrapper/>}></Route>
                 <Route path="/Calculator" element={<CalculateElectricWrapper/>}></Route>
                 <Route path="/HanziCard" element={<HanziContainer/>}></Route>
               </Routes>
-            </Provider>
-          </Content>
+            </Content>
+          </Layout>
         </Layout>
       </Layout>
-    </Layout>
   );
 }
 

@@ -5,6 +5,7 @@ import { Input } from 'antd';
 import {Spin, Button } from 'antd';
 import HanziCard from "./HanziCard";
 import {getHanziList} from "../../Redux/Slice/HanziCardSlice";
+import {setSelectedPage} from "../../Redux/Slice/NavigationBarSlice";
 
 const { Search } = Input;
 
@@ -16,6 +17,7 @@ const HanziContainer = () => {
   const [take, setTake] =  useState(1);
 
   useEffect(() => {
+    setSelectedPage('HanziCard');
     dispatch(getHanziList({skip: skip, take: take}));
   }, [])
 
