@@ -10,9 +10,9 @@ const DynamicContent = ({page}) => {
     if (page.toString() === "Calculator") {
       setComponent(<CalculateElectricWrapper/>);
     } else if (page.toString() === "HanziCard") {
-      setComponent(<HanziContainer />);
+      setComponent(<HanziContainer/>);
     } else if (page.toString() === "Descriptions") {
-      setComponent(<DescriptionsComponent />);
+      setComponent(<DescriptionsComponent/>);
     } else {
       setComponent(<CalculateElectricWrapper/>);
     }

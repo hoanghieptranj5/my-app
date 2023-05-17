@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import { Input } from 'antd';
-import {Spin, Button } from 'antd';
+import {Input} from 'antd';
+import {Spin, Button} from 'antd';
 import HanziCard from "./HanziCard";
 import {getHanziList} from "../../Redux/Slice/HanziCardSlice";
 import {setSelectedPage} from "../../Redux/Slice/NavigationBarSlice";
 
-const { Search } = Input;
+const {Search} = Input;
 
 const HanziContainer = () => {
   const hanziStore = useSelector((state) => state.hanziCard);
   const dispatch = useDispatch();
 
   const [skip, setSkip] = useState(1);
-  const [take, setTake] =  useState(1);
+  const [take, setTake] = useState(1);
 
   useEffect(() => {
     setSelectedPage('HanziCard');
@@ -28,8 +28,8 @@ const HanziContainer = () => {
 
   return (
     <div>
-      <Search placeholder="input skip" onSearch={onClickSkip} style={{ width: 200 }} />
-      <Search placeholder="input take" onSearch={onClickTake} style={{ width: 200 }} />
+      <Search placeholder="input skip" onSearch={onClickSkip} style={{width: 200}}/>
+      <Search placeholder="input take" onSearch={onClickTake} style={{width: 200}}/>
       <Button onClick={onSubmit}>Submit</Button>
 
       {

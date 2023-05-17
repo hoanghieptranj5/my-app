@@ -5,7 +5,7 @@ import {useState} from "react";
 
 const {Meta} = Card;
 
-const HanziCard = ({ hanzi }) => {
+const HanziCard = ({hanzi}) => {
   const [showMore, toggleShowMore] = useState(true);
 
   const clickShowMoreButton = (value) => {
@@ -20,7 +20,7 @@ const HanziCard = ({ hanzi }) => {
     <Card
       style={{width: "100%"}}
       cover={
-        <b style={{ fontSize: 120, fontFamily: 'kaiti, kaiti SC', marginLeft: '1%' }}>{hanzi.id}</b>
+        <b style={{fontSize: 120, fontFamily: 'kaiti, kaiti SC', marginLeft: '1%'}}>{hanzi.id}</b>
       }
       actions={[
         <SettingOutlined key="setting"/>,
@@ -35,13 +35,13 @@ const HanziCard = ({ hanzi }) => {
       />
       {
         showMore ? <div>
-          <a onClick={clickCollapseButton}>Collapse</a>
-          <DescriptionsComponent hanzi={hanzi} />
-        </div>
+            <a onClick={clickCollapseButton}>Collapse</a>
+            <DescriptionsComponent hanzi={hanzi}/>
+          </div>
           :
-        <a onClick={clickShowMoreButton}>
-          Show more
-        </a>
+          <a onClick={clickShowMoreButton}>
+            Show more
+          </a>
       }
 
     </Card>

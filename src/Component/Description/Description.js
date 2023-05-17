@@ -1,4 +1,4 @@
-import { Descriptions } from 'antd';
+import {Descriptions} from 'antd';
 
 const DescriptionsComponent = ({hanzi}) => {
   return (
