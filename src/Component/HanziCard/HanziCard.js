@@ -2,6 +2,7 @@ import {EditOutlined, EllipsisOutlined, SettingOutlined} from '@ant-design/icons
 import {Avatar, Card} from 'antd';
 import DescriptionsComponent from "../Description/Description";
 import {useState} from "react";
+import ChineseCharacterInfo from "./ChineseCharacterInfo";
 
 const {Meta} = Card;
 
@@ -36,7 +37,7 @@ const HanziCard = ({hanzi}) => {
       {
         showMore ? <div>
             <a onClick={clickCollapseButton}>Collapse</a>
-            <DescriptionsComponent hanzi={hanzi}/>
+            <ChineseCharacterInfo hanzi={hanzi}/>
           </div>
           :
           <a onClick={clickShowMoreButton}>

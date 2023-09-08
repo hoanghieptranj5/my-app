@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getHanziRange} from "../../Service/HanziCardService";
+import {getRandomHanzi} from "../../Service/HanziCardService";
 
 const initialState = {
   isLoading: true,
@@ -7,10 +7,10 @@ const initialState = {
   errorMessage: ''
 };
 
-export const getHanziList = createAsyncThunk(
-  'v2/getHanziList',
+export const getRandomHanziList = createAsyncThunk(
+  'v2/getRandomHanzi',
   async (payload) => {
-    const response = await getHanziRange(payload.skip, payload.take);
+    const response = await getRandomHanzi(payload.numberOfChars)
     return response.json();
   }
 );
@@ -20,16 +20,16 @@ export const hanziCardSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getHanziList.pending, (state) => {
+    builder.addCase(getRandomHanziList.pending, (state) => {
       state.isLoading = true;
     });
 
-    builder.addCase(getHanziList.fulfilled, (state, action) => {
+    builder.addCase(getRandomHanziList.fulfilled, (state, action) => {
       state.isLoading = false;
       state.items = action.payload;
     });
 
-    builder.addCase(getHanziList.rejected, (state) => {
+    builder.addCase(getRandomHanziList.rejected, (state) => {
       state.isLoading = false;
       state.errorMessage = "error while loading";
     });
