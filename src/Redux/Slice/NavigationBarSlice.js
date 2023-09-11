@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedPage: 'HanziCard'
+  selectedPage: 'Calculator'
 }
 
 export const navigationBarSlice = createSlice({
