@@ -9,6 +9,7 @@ import React from 'react';
 
 import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
 import HanziContainer from "./Component/HanziCard/HanziContainer";
+import SearchSingle from "./Component/Search/SearchSingle";
 
 const {Header, Content, Sider} = Layout;
 
@@ -74,6 +75,7 @@ const App = () => {
               <Route path="/" element={<CalculateElectricWrapper/>}></Route>
               <Route path="/Calculator" element={<CalculateElectricWrapper/>}></Route>
               <Route path="/HanziCard" element={<HanziContainer/>}></Route>
+              <Route path="/SearchSingle" element={<SearchSingle/>}></Route>
             </Routes>
           </Content>
         </Layout>
