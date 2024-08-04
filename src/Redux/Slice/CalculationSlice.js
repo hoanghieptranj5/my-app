@@ -28,10 +28,10 @@ export const calculationSlice = createSlice({
 
     builder.addCase(fetchCalculation.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.items = action.payload.items;
-      state.usage = action.payload.usage;
-      state.total = action.payload.total;
-      state.totalWithVAT = action.payload.totalWithVAT;
+      state.items = action.payload.value.items;
+      state.usage = action.payload.value.usage;
+      state.total = action.payload.value.total;
+      state.totalWithVAT = action.payload.value.totalWithVAT;
     });
 
     builder.addCase(fetchCalculation.rejected, (state, action) => {
