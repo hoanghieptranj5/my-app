@@ -2,6 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const API_URL = process.env.REACT_APP_API_URL;
+
+const isValidJwt = (token) => {
+    const jwtPattern = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/;
+    return jwtPattern.test(token);
+};
+
+
 export const login = createAsyncThunk(
     'auth/login',
     async({username, password}, { rejectWithValue }) => {
@@ -20,10 +27,10 @@ export const login = createAsyncThunk(
 
             const data = await response.json();
 
-            if (response.status === 200 && data.value) {
+            if (response.status === 200 && data.value && isValidJwt(data.value)) {
                 return { token: `Bearer ${data.value}`, username };
             } else {
-                return rejectWithValue(data.message || 'Login failed');
+                return rejectWithValue(data.value || 'Login failed');
             }
         } catch (error) {
             return rejectWithValue(error.message);
