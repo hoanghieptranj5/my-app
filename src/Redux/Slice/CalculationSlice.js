@@ -11,8 +11,8 @@ const initialState = {
 
 export const fetchCalculation = createAsyncThunk(
   'fetch_calculation',
-  async (value) => {
-    const response = await calculate(value);
+  async ({ inputUsage, token }) => {
+    const response = await calculate(inputUsage, token);
     return await response.json();
   }
 )

@@ -1,6 +1,6 @@
-const productionLink = "https://shanetestazurefunction.azurewebsites.net/api/electricPrices/usage/230";
-const CALCULATE_URL = 'Calculator?usage=';
+const URL = process.env.REACT_APP_API_URL;
 
-export const calculate = async (usage) => {
-  return await fetch("https://shanetestazurefunction.azurewebsites.net/api/electricPrices/usage/" + usage.toString());
+export const calculate = async (usage, token)=> {
+  console.log(token);
+  return await fetch(`${URL}/electricPrices/usage/${usage}?token=${token}`);
 }

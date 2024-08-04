@@ -1,6 +1,6 @@
 import './App.css';
 import {useSelector} from "react-redux";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Link, Navigate} from "react-router-dom";
 
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
@@ -10,6 +10,7 @@ import React from 'react';
 import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
 import HanziContainer from "./Component/HanziCard/HanziContainer";
 import SearchSingle from "./Component/Search/SearchSingle";
+import Login from "./Component/Login/Login";
 
 const {Header, Content, Sider} = Layout;
 
@@ -37,6 +38,11 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
     };
   },
 );
+
+const ProtectedRoute = ({ children }) => {
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 const App = () => {
   const navigationBar = useSelector((state) => state.navigationBar);
@@ -71,12 +77,29 @@ const App = () => {
               minHeight: 280,
             }}
           >
-            <Routes>
-              <Route path="/" element={<CalculateElectricWrapper/>}></Route>
-              <Route path="/Calculator" element={<CalculateElectricWrapper/>}></Route>
-              <Route path="/HanziCard" element={<HanziContainer/>}></Route>
-              <Route path="/SearchSingle" element={<SearchSingle/>}></Route>
-            </Routes>
+              <Routes>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/" element={
+                      <ProtectedRoute>
+                          <CalculateElectricWrapper />
+                      </ProtectedRoute>
+                  } />
+                  <Route path="/Calculator" element={
+                      <ProtectedRoute>
+                          <CalculateElectricWrapper />
+                      </ProtectedRoute>
+                  } />
+                  <Route path="/HanziCard" element={
+                      <ProtectedRoute>
+                          <HanziContainer />
+                      </ProtectedRoute>
+                  } />
+                  <Route path="/SearchSingle" element={
+                      <ProtectedRoute>
+                          <SearchSingle />
+                      </ProtectedRoute>
+                  } />
+              </Routes>
           </Content>
         </Layout>
       </Layout>

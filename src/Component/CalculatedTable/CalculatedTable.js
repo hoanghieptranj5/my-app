@@ -7,10 +7,12 @@ import {calculatedTableColumns} from "./CalculatedTableColumns";
 
 const CalculatedTable = ({inputUsage}) => {
   const calculation = useSelector((state) => state.calculation);
+  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCalculation(inputUsage));
+      console.log('token is ' + token);
+    dispatch(fetchCalculation({ inputUsage, token }));
   }, [inputUsage])
 
   return (
