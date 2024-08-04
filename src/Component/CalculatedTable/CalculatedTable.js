@@ -11,7 +11,6 @@ const CalculatedTable = ({inputUsage}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      console.log('token is ' + token);
     dispatch(fetchCalculation({ inputUsage, token }));
   }, [inputUsage])
 

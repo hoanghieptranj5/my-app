@@ -10,7 +10,6 @@ const ChineseCharacterInfo = ({ hanzi }) => {
     setIsMeaningExpanded(!isMeaningExpanded);
   };
   const showModal = () => {
-    console.log(isModalOpen)
     setIsModalOpen(true);
   };
   const handleOk = () => {

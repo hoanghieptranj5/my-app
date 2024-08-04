@@ -52,7 +52,6 @@ const authSlice = createSlice({
                 state.isAuthenticated = true;
                 state.user = action.payload.username;
                 state.token = action.payload.token;
-                console.log('Token is saved' + state.token);
                 state.error = null;
             })
             .addCase(login.rejected, (state, action) => {
