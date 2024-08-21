@@ -1,6 +1,6 @@
 import './App.css';
 import {useSelector} from "react-redux";
-import {Routes, Route, Link, Navigate} from "react-router-dom";
+import {Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
 
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
@@ -11,15 +11,16 @@ import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElect
 import HanziContainer from "./Component/HanziCard/HanziContainer";
 import SearchSingle from "./Component/Search/SearchSingle";
 import Login from "./Component/Login/Login";
+import {generateBreadcrumbItems} from "./Component/Breadcrumb/BreadcrumbHelper";
 
 const {Header, Content, Sider} = Layout;
 
-const menuItems: MenuProps['items'] = ['Calculator', 'HanziCard'].map(key => ({
+const navigationMenuItems: MenuProps['items'] = ['Calculator', 'HanziCard'].map(key => ({
   key,
   label: <Link className='nav-link' to={`${key}`}>{key}</Link>,
 }));
 
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
+const sideBarMenuItems: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
 
@@ -45,13 +46,14 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const App = () => {
+  const location = useLocation();
   const navigationBar = useSelector((state) => state.navigationBar);
 
   return (
     <Layout>
       <Header className="header">
         <div className="logo"/>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[navigationBar.selectedPage]} items={menuItems}/>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[navigationBar.selectedPage]} items={navigationMenuItems}/>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
@@ -60,15 +62,13 @@ const App = () => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             style={{height: '100%', borderRight: 0}}
-            items={items2}
+            items={sideBarMenuItems}
           />
         </Sider>
         <Layout style={{padding: '0 24px 24px'}}>
-          <Breadcrumb style={{margin: '16px 0'}}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+            <Breadcrumb style={{margin: '16px 0'}}>
+                {generateBreadcrumbItems(location)}
+            </Breadcrumb>
           <Content
             className="site-layout-background"
             style={{
