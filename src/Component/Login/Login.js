@@ -9,16 +9,21 @@ const { Title } = Typography;
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const error = useSelector((state) => state.auth.error);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         dispatch(login({ username, password })).then((action) => {
+            setIsLoading(false); // Reset loading state
             if (action.meta.requestStatus === 'fulfilled') {
                 navigate('/');
             }
+        }).catch(() => {
+            setIsLoading(false); // Reset loading state in case of error
         });
     };
 
@@ -53,7 +58,7 @@ const Login = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" block onClick={handleSubmit}>
-                        Login
+                    { isLoading ? 'Logging in...' : 'Login' }
                     </Button>
                 </Form.Item>
             </Form>
