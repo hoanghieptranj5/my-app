@@ -11,15 +11,16 @@ const {Search} = Input;
 
 const HanziContainer = () => {
   const hanziStore = useSelector((state) => state.hanziCard);
+  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setSelectedPage('HanziCard');
-    dispatch(getRandomHanziList({numberOfChars: 1}));
+    dispatch(getRandomHanziList({length: 1, token}));
   }, [])
 
   const onClickNumberOfChars = (value) => {
-    dispatch(getRandomHanziList({numberOfChars: value}));
+    dispatch(getRandomHanziList({length: value, token}));
   };
 
   return (
