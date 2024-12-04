@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './ChineseCharacterCard.css';
-import {Button, Modal} from 'antd';
+import { Button, Modal } from 'antd';
 
 const ChineseCharacterInfo = ({ hanzi }) => {
   const [isMeaningExpanded, setIsMeaningExpanded] = useState(false);
@@ -24,7 +24,7 @@ const ChineseCharacterInfo = ({ hanzi }) => {
     // Split the paragraph using the separator pattern
     const lines = paragraph.split(separatorPattern);
     return lines;
-  }
+  };
 
   return (
     <>
@@ -46,20 +46,29 @@ const ChineseCharacterInfo = ({ hanzi }) => {
           </div>
           <div className="description-row">
             <div className="description-label">Meaning:</div>
-            {isMeaningExpanded ? hanzi.meaningInVietnamese : `${hanzi.meaningInVietnamese.slice(0, 100)}...`} {/* Display the first 100 characters */}
+            {isMeaningExpanded
+              ? hanzi.meaningInVietnamese
+              : `${hanzi.meaningInVietnamese.slice(0, 100)}...`}{' '}
+            {/* Display the first 100 characters */}
           </div>
           <Button type="link" onClick={showModal}>
             Show More
           </Button>
         </div>
       </div>
-      <Modal title={<h1>{hanzi.id + "'s details"}</h1>} visible={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        {
-          splitParagraphWithSepartor(hanzi.meaningInVietnamese, "\\d+\\.").map(x => <p>{x}</p>)
-        }
+      <Modal
+        title={<h1>{hanzi.id + "'s details"}</h1>}
+        visible={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        {splitParagraphWithSepartor(hanzi.meaningInVietnamese, '\\d+\\.').map(
+          (x) => (
+            <p>{x}</p>
+          ),
+        )}
       </Modal>
     </>
-
   );
 };
 

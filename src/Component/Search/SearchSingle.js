@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button, Collapse, Divider, List, Typography } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import ShadowedPanel from "../Panel/ShadowedPanel";
+import ShadowedPanel from '../Panel/ShadowedPanel';
 
 const { Panel } = Collapse;
 
@@ -33,9 +33,7 @@ const SearchSingle = () => {
           type="primary"
           icon={<SearchOutlined />}
           onClick={handleSearch}
-        >
-
-        </Button>
+        ></Button>
       </div>
 
       {searchResults.length > 0 && (

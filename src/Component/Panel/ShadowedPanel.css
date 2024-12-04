@@ -1,13 +1,13 @@
 .panel {
-    width: 300px; /* Adjust the width as needed */
-    padding: 20px; /* Adjust the padding as needed */
-    background-color: #ffffff; /* Background color of the panel */
-    border-radius: 8px; /* Rounded corners for an elegant look */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Box shadow for the panel */
+  width: 300px; /* Adjust the width as needed */
+  padding: 20px; /* Adjust the padding as needed */
+  background-color: #ffffff; /* Background color of the panel */
+  border-radius: 8px; /* Rounded corners for an elegant look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Box shadow for the panel */
 
-    /* Center the panel on the page */
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  /* Center the panel on the page */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

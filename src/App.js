@@ -1,23 +1,23 @@
 import './App.css';
-import {useSelector} from "react-redux";
-import {Routes, Route, Link, Navigate, useLocation} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
-import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
-import type {MenuProps} from 'antd';
-import {Breadcrumb, Layout, Menu} from 'antd';
+import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
 
-import CalculateElectricWrapper from "./Component/CalculatedTable/CalculateElectricWrapper";
-import HanziContainer from "./Component/HanziCard/HanziContainer";
-import SearchSingle from "./Component/Search/SearchSingle";
-import Login from "./Component/Login/Login";
-import {generateBreadcrumbItems} from "./Component/Breadcrumb/BreadcrumbHelper";
+import CalculateElectricWrapper from './Component/CalculatedTable/CalculateElectricWrapper';
+import HanziContainer from './Component/HanziCard/HanziContainer';
+import SearchSingle from './Component/Search/SearchSingle';
+import Login from './Component/Login/Login';
+import { generateBreadcrumbItems } from './Component/Breadcrumb/BreadcrumbHelper';
 
-const {Header, Content, Sider} = Layout;
+const { Header, Content, Sider } = Layout;
 
 const navigationMenuItems: MenuProps['items'] = ['Calculator', 'HanziCard'].map(key => ({
   key,
-  label: <Link className='nav-link' to={`${key}`}>{key}</Link>,
+  label: <Link className="nav-link" to={`${key}`}>{key}</Link>,
 }));
 
 const sideBarMenuItems: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -41,8 +41,8 @@ const sideBarMenuItems: MenuProps['items'] = [UserOutlined, LaptopOutlined, Noti
 );
 
 const ProtectedRoute = ({ children }) => {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    return isAuthenticated ? children : <Navigate to="/login" />;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 const App = () => {
@@ -52,8 +52,9 @@ const App = () => {
   return (
     <Layout>
       <Header className="header">
-        <div className="logo"/>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[navigationBar.selectedPage]} items={navigationMenuItems}/>
+        <div className="logo" />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[navigationBar.selectedPage]}
+              items={navigationMenuItems} />
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
@@ -61,14 +62,14 @@ const App = () => {
             mode="inline"
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
-            style={{height: '100%', borderRight: 0}}
+            style={{ height: '100%', borderRight: 0 }}
             items={sideBarMenuItems}
           />
         </Sider>
-        <Layout style={{padding: '0 24px 24px'}}>
-            <Breadcrumb style={{margin: '16px 0'}}>
-                {generateBreadcrumbItems(location)}
-            </Breadcrumb>
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            {generateBreadcrumbItems(location)}
+          </Breadcrumb>
           <Content
             className="site-layout-background"
             style={{
@@ -77,34 +78,34 @@ const App = () => {
               minHeight: 280,
             }}
           >
-              <Routes>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/" element={
-                      <ProtectedRoute>
-                          <CalculateElectricWrapper />
-                      </ProtectedRoute>
-                  } />
-                  <Route path="/Calculator" element={
-                      <ProtectedRoute>
-                          <CalculateElectricWrapper />
-                      </ProtectedRoute>
-                  } />
-                  <Route path="/HanziCard" element={
-                      <ProtectedRoute>
-                          <HanziContainer />
-                      </ProtectedRoute>
-                  } />
-                  <Route path="/SearchSingle" element={
-                      <ProtectedRoute>
-                          <SearchSingle />
-                      </ProtectedRoute>
-                  } />
-              </Routes>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={
+                <ProtectedRoute>
+                  <CalculateElectricWrapper />
+                </ProtectedRoute>
+              } />
+              <Route path="/Calculator" element={
+                <ProtectedRoute>
+                  <CalculateElectricWrapper />
+                </ProtectedRoute>
+              } />
+              <Route path="/HanziCard" element={
+                <ProtectedRoute>
+                  <HanziContainer />
+                </ProtectedRoute>
+              } />
+              <Route path="/SearchSingle" element={
+                <ProtectedRoute>
+                  <SearchSingle />
+                </ProtectedRoute>
+              } />
+            </Routes>
           </Content>
         </Layout>
       </Layout>
     </Layout>
   );
-}
+};
 
 export default App;

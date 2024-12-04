@@ -1,8 +1,8 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  selectedPage: 'Calculator'
-}
+  selectedPage: 'Calculator',
+};
 
 export const navigationBarSlice = createSlice({
   name: 'navigationBar',
@@ -10,11 +10,11 @@ export const navigationBarSlice = createSlice({
   reducers: {
     setSelectedPage: (state, action) => {
       state.selectedPage = action.payload;
-    }
+    },
   },
-  extraReducers: {}
+  extraReducers: {},
 });
 
-export const {setSelectedPage} = navigationBarSlice.actions;
+export const { setSelectedPage } = navigationBarSlice.actions;
 
 export default navigationBarSlice.reducer;
