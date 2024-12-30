@@ -1,0 +1,98 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #444;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.form-section {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.list {
+  margin-top: 10px;
+}
+
+.list-item {
+  padding: 8px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.results-section {
+  margin-top: 20px;
+}
+
+.balances-list {
+  list-style: none;
+  padding: 0;
+}
+
+.balance-item {
+  padding: 10px;
+  background: #e9f7ef;
+  border: 1px solid #c8e6c9;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  color: #2e7d32;
+}
+
+.balance-item.negative {
+  background: #ffebee;
+  border-color: #ef9a9a;
+  color: #c62828;
+}
+
+.delete-button {
+  float: right;
+}

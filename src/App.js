@@ -12,6 +12,7 @@ import HanziContainer from './Component/HanziCard/HanziContainer';
 import SearchSingle from './Component/Search/SearchSingle';
 import Login from './Component/Login/Login';
 import { generateBreadcrumbItems } from './Component/Breadcrumb/BreadcrumbHelper';
+import LunchSplitter from './Component/LunchSplitter/LunchSplitter';
 
 const { Header, Content, Sider } = Layout;
 
@@ -80,6 +81,7 @@ const App = () => {
           >
             <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/lunch" element={<LunchSplitter />} />
               <Route path="/" element={
                 <ProtectedRoute>
                   <CalculateElectricWrapper />
