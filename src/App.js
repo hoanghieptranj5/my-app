@@ -16,7 +16,7 @@ import LunchSplitter from './Component/LunchSplitter/LunchSplitter';
 
 const { Header, Content, Sider } = Layout;
 
-const navigationMenuItems: MenuProps['items'] = ['Calculator', 'HanziCard'].map(key => ({
+const navigationMenuItems: MenuProps['items'] = ['Calculator', 'HanziCard', 'Lunch'].map(key => ({
   key,
   label: <Link className="nav-link" to={`${key}`}>{key}</Link>,
 }));
