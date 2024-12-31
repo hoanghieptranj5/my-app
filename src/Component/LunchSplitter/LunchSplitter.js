@@ -103,6 +103,9 @@ const LunchSplitter = () => {
     setBalances(newBalances);
   };
 
+  const totalPayment = items.reduce((sum, item) => sum + item.price, 0);
+  const perPerson = names.length ? totalPayment / names.length : 0;
+
   return (
     <Row gutter={[16, 16]} justify="center">
       <Col xs={24} sm={24} md={12} lg={8}>
@@ -206,6 +209,12 @@ const LunchSplitter = () => {
       </Col>
 
       <Col xs={24} sm={24} md={12} lg={8}>
+        <Card title="Summary">
+          <Text>Total Payment: ${totalPayment.toFixed(2)}</Text>
+          <br />
+          <Text>Per Person: ${perPerson.toFixed(2)}</Text>
+        </Card>
+
         <Card title="Balances">
           <List
             bordered
