@@ -1,27 +1,59 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 const LunchSplitter = () => {
-  const [names, setNames] = useState([]);
-  const [currentName, setCurrentName] = useState('');
-  const [items, setItems] = useState([]);
-  const [currentItem, setCurrentItem] = useState({
-    name: '',
-    price: 0,
-    paidBy: '',
+  // Load initial states from sessionStorage or default values
+  const [names, setNames] = useState(() => {
+    const savedNames = sessionStorage.getItem('names');
+    return savedNames ? JSON.parse(savedNames) : [];
   });
+
+  const [currentName, setCurrentName] = useState(() => {
+    const savedCurrentName = sessionStorage.getItem('currentName');
+    return savedCurrentName || '';
+  });
+
+  const [items, setItems] = useState(() => {
+    const savedItems = sessionStorage.getItem('items');
+    return savedItems ? JSON.parse(savedItems) : [];
+  });
+
+  const [currentItem, setCurrentItem] = useState(() => {
+    const savedCurrentItem = sessionStorage.getItem('currentItem');
+    return savedCurrentItem
+      ? JSON.parse(savedCurrentItem)
+      : { name: '', price: 0, paidBy: '' };
+  });
+
   const [balances, setBalances] = useState([]);
 
+  // Save states to sessionStorage whenever they change
   useEffect(() => {
+    sessionStorage.setItem('names', JSON.stringify(names));
+  }, [names]);
+
+  useEffect(() => {
+    sessionStorage.setItem('currentName', currentName);
+  }, [currentName]);
+
+  useEffect(() => {
+    sessionStorage.setItem('items', JSON.stringify(items));
     calculateSharedPrice();
-  }, [items]);
+  }, [items, names]);
+
+  useEffect(() => {
+    sessionStorage.setItem('currentItem', JSON.stringify(currentItem));
+  }, [currentItem]);
 
   const addPerson = () => {
     if (currentName && !names.includes(currentName)) {
       setNames([...names, currentName]);
       setCurrentName('');
     }
+  };
+
+  const deletePerson = (index) => {
+    setNames(names.filter((_, i) => i !== index));
   };
 
   const addItem = () => {
@@ -81,6 +113,12 @@ const LunchSplitter = () => {
             {names.map((name, index) => (
               <li key={index} className="list-item">
                 {name}
+                <button
+                  className="delete-button"
+                  onClick={() => deletePerson(index)}
+                >
+                  Delete
+                </button>
               </li>
             ))}
           </ul>
@@ -104,6 +142,7 @@ const LunchSplitter = () => {
               type="number"
               placeholder="Price"
               value={currentItem.price}
+              onFocus={(e) => e.target.select()}
               onChange={(e) =>
                 setCurrentItem({ ...currentItem, price: e.target.value })
               }
@@ -142,6 +181,14 @@ const LunchSplitter = () => {
                   </button>
                 </li>
               ))}
+              <h4 style={{ float: 'right' }}>
+                <b>
+                  Total: $
+                  {items
+                    .reduce((prev, curr) => prev + curr.price, 0)
+                    .toFixed(2)}
+                </b>
+              </h4>
             </ul>
           </div>
         </div>
@@ -153,7 +200,9 @@ const LunchSplitter = () => {
           {balances.map((balance, index) => (
             <li
               key={index}
-              className={`balance-item ${balance.balance > 0 ? 'positive' : 'negative'}`}
+              className={`balance-item ${
+                balance.balance > 0 ? 'positive' : 'negative'
+              }`}
             >
               {balance.name}{' '}
               {balance.balance > 0
