@@ -1,98 +1,51 @@
-/* styles.css */
+/* style.css */
 
+/* General styles */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
 }
 
-.app-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Ant Design component overrides */
+.ant-card {
+  margin-bottom: 16px;
 }
 
-.title {
-  text-align: center;
-  color: #444;
-  font-size: 2rem;
-  margin-bottom: 20px;
+.ant-card .ant-card-head {
+  background-color: #fafafa;
 }
 
-.form-section {
-  margin-bottom: 20px;
-}
-
-.input-group {
+.ant-list-item {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.input {
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
+.ant-divider {
+  margin: 12px 0;
+}
+
+/* Custom button styles */
+.ant-btn {
   border-radius: 4px;
-  flex: 1;
 }
 
-.button {
-  padding: 8px 12px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Form input and select adjustments */
+.ant-input,
+.ant-select {
+  width: 100%;
 }
 
-.button:hover {
-  background-color: #0056b3;
-}
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .ant-card {
+    margin-bottom: 12px;
+  }
 
-.list {
-  margin-top: 10px;
-}
-
-.list-item {
-  padding: 8px;
-  background: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  margin-bottom: 5px;
-}
-
-.results-section {
-  margin-top: 20px;
-}
-
-.balances-list {
-  list-style: none;
-  padding: 0;
-}
-
-.balance-item {
-  padding: 10px;
-  background: #e9f7ef;
-  border: 1px solid #c8e6c9;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  color: #2e7d32;
-}
-
-.balance-item.negative {
-  background: #ffebee;
-  border-color: #ef9a9a;
-  color: #c62828;
-}
-
-.delete-button {
-  float: right;
+  .ant-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

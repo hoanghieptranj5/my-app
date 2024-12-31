@@ -58,15 +58,15 @@ const App = () => {
               items={navigationMenuItems} />
       </Header>
       <Layout>
-        <Sider width={200} className="site-layout-background">
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
-            items={sideBarMenuItems}
-          />
-        </Sider>
+        {/*<Sider width={200} className="site-layout-background">*/}
+        {/*  <Menu*/}
+        {/*    mode="inline"*/}
+        {/*    defaultSelectedKeys={['1']}*/}
+        {/*    defaultOpenKeys={['sub1']}*/}
+        {/*    style={{ height: '100%', borderRight: 0 }}*/}
+        {/*    items={sideBarMenuItems}*/}
+        {/*  />*/}
+        {/*</Sider>*/}
         <Layout style={{ padding: '0 24px 24px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             {generateBreadcrumbItems(location)}
