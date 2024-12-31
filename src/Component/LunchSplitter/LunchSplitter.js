@@ -53,6 +53,15 @@ const LunchSplitter = () => {
   };
 
   const deletePerson = (index) => {
+    const personToDelete = names.find((_, i) => i === index);
+    const payerList = items.filter((item) => item.paidBy === personToDelete);
+
+    if (payerList.length > 0) {
+      window.alert("can't delete the person: " + personToDelete + "\n that one still in the payer list!");
+      console.error("can't delete the person", personToDelete);
+      return;
+    }
+
     setNames(names.filter((_, i) => i !== index));
   };
 
@@ -181,13 +190,21 @@ const LunchSplitter = () => {
                   </button>
                 </li>
               ))}
-              <h4 style={{ float: 'right' }}>
+              <h4 style={{ float: 'right', display: 'inline-block', margin: '0 5px' }}>
                 <b>
                   Total: $
                   {items
                     .reduce((prev, curr) => prev + curr.price, 0)
                     .toFixed(2)}
                 </b>
+              </h4>
+              <h4 style={{ float: 'right' }}>
+
+                  Per person: $
+                  {(items
+                    .reduce((prev, curr) => prev + curr.price, 0)
+                    .toFixed(2) / items.length).toFixed(2)}
+
               </h4>
             </ul>
           </div>
